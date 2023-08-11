@@ -7,3 +7,24 @@ test('normalizeURL: Strip protocol', () => {
   const expected = 'blog.boot.dev/path';
   expect(actual).toEqual(expected);
 });
+
+test('normalizeURL: Strip trailing slashes', () => {
+  const input = 'https://blog.boot.dev/path/';
+  const actual = normalizeURL(input);
+  const expected = 'blog.boot.dev/path';
+  expect(actual).toEqual(expected);
+});
+
+test('normalizeURL: Convert to lowercase', () => {
+  const input = 'https://BLOG.boot.dev/path/';
+  const actual = normalizeURL(input);
+  const expected = 'blog.boot.dev/path';
+  expect(actual).toEqual(expected);
+});
+
+test('normalizeURL: Strip http', () => {
+  const input = 'http://blog.boot.dev/path/';
+  const actual = normalizeURL(input);
+  const expected = 'blog.boot.dev/path';
+  expect(actual).toEqual(expected);
+});
